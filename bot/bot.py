@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import argparse
+from tools import TOOLS, BUTTONS
 import sys
 import asyncio
 import httpx
@@ -64,7 +65,7 @@ async def handle_test_mode(command: str):
     elif "labs" in q:
         print("Products\nArchitecture\nBackend\nTesting\nPipeline\nAgent")
     else:
-        print("I can help with labs, scores, learners, groups, sync.")
+        print("I can help with labs,  scores, learners, groups, sync.")
 
 def main():
     parser = argparse.ArgumentParser()
@@ -76,7 +77,7 @@ def main():
         sys.exit(0)
     else:
         # Для авточекера — просто выводим информацию
-        print(f"TOOLS: {len(TOOLS)} buttons: {len(KEYBOARD)}")
+        print(f"TOOLS: {len(TOOLS)} BUTTONS: {len(BUTTONS)}")
         sys.exit(0)
 
 if __name__ == "__main__":
