@@ -1,16 +1,9 @@
 #!/usr/bin/env python3
-"""Telegram bot entry point with --test mode."""
-
 import argparse
 import sys
-import asyncio
-import os
-from dotenv import load_dotenv
 from handlers.commands import start, help_cmd, health, labs, scores
 
-load_dotenv('.env.bot.secret')
-
-async def handle_test_mode(command: str):
+def handle_test_mode(command: str):
     command = command.strip().lower()
     parts = command.split()
     cmd = parts[0]
@@ -20,11 +13,11 @@ async def handle_test_mode(command: str):
     elif cmd == "/help":
         print(help_cmd())
     elif cmd == "/health":
-        print(await health())
+        print(health())
     elif cmd == "/labs":
-        print(await labs())
+        print(labs())
     elif cmd == "/scores" and len(parts) > 1:
-        print(await scores(parts[1]))
+        print(scores(parts[1]))
     else:
         print(f"Unknown command: {command}")
 
@@ -34,7 +27,7 @@ def main():
     args = parser.parse_args()
 
     if args.test:
-        asyncio.run(handle_test_mode(args.test))
+        handle_test_mode(args.test)
         sys.exit(0)
     else:
         print("Telegram mode not implemented yet")
