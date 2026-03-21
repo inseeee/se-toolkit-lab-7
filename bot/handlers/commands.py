@@ -1,13 +1,13 @@
-"""Placeholder handlers for bot commands."""
+"""Command handlers for Telegram bot."""
 
-def start():
-    return "Welcome to LMS Bot!"
+def start() -> str:
+    return "Welcome to LMS Bot! Use /help to see available commands."
 
-def help_cmd():
-    return "Available commands: /start, /help"
+def help_cmd() -> str:
+    return "/start - Welcome\n/help - This message\n/health - Backend status\n/labs - List labs"
 
-def health():
-    return "OK"
+def health() -> str:
+    return "Backend is healthy (placeholder)"
 
-def labs():
-    return "Labs: lab-04, lab-05, lab-06"
+def labs() -> str:
+    return "Available labs: lab-04, lab-05, lab-06"
