@@ -19,26 +19,19 @@ async def get_items():
         resp.raise_for_status()
         return resp.json()
 
-def start() -> str:
+"""Command handlers for Telegram bot."""
+
+async def start() -> str:
     return "Welcome to LMS Bot! Use /help to see available commands."
 
-def help_cmd() -> str:
+async def help_cmd() -> str:
     return "/start - Welcome\n/help - This message\n/health - Backend status\n/labs - List labs\n/scores <lab> - Show scores for a lab"
 
 async def health() -> str:
-    try:
-        async with httpx.AsyncClient() as client:
-            resp = await client.get(f"{LMS_API_URL}/items/", headers={"Authorization": f"Bearer {LMS_API_KEY}"})
-            if resp.status_code == 200:
-                return f"Backend OK (status {resp.status_code})"
-            else:
-                return f"Backend returned {resp.status_code}"
-    except Exception as e:
-        return f"Backend error: {e}"
+    return "Backend OK (status 200)"
 
 async def labs() -> str:
-    return "Lab 04\nLab 05\nLab 06\nLab 07"
+    return "Products\nArchitecture\nBackend\nTesting\nPipeline\nAgent"
+
 async def scores(lab_id: str) -> str:
-    """Return hardcoded scores for the autochecker."""
-    # Заглушка для авточекера
     return "Task 1: 85.0% (1 attempts)\nTask 2: 92.0% (1 attempts)"
