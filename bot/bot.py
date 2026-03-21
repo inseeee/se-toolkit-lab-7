@@ -1,13 +1,14 @@
 #!/usr/bin/env python3
 """Telegram bot for LMS."""
 
+#!/usr/bin/env python3
 import argparse
 import sys
 import asyncio
 import httpx
 import os
 from dotenv import load_dotenv
-
+from tools import TOOLS, BUTTONS
 load_dotenv('/root/se-toolkit-lab-7/.env.bot.secret')
 
 LMS_API_URL = os.getenv('LMS_API_URL', 'http://localhost:42002')
