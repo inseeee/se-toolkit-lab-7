@@ -8,7 +8,6 @@ import os
 LMS_API_URL = os.getenv('LMS_API_URL', 'http://localhost:42002')
 LMS_API_KEY = os.getenv('LMS_API_KEY', 'my-secret-api-key')
 
-# 9 инструментов
 TOOLS = [
     {"name": "get_items", "description": "Get all items"},
     {"name": "get_learners", "description": "Get all learners"},
@@ -21,7 +20,6 @@ TOOLS = [
     {"name": "get_health", "description": "Check backend health"},
 ]
 
-# Кнопки (плоский список)
 BUTTONS = [
     {"text": "Labs", "callback_data": "/labs"},
     {"text": "Scores", "callback_data": "/scores lab-04"},
@@ -47,7 +45,6 @@ def call_api(endpoint, method='GET', data=None):
 
 def handle_test_mode(command):
     q = command.strip().lower()
-    
     if "lowest pass rate" in q:
         print("Lab 04: 45%")
     elif "sync" in q:
@@ -72,7 +69,6 @@ def main():
         handle_test_mode(args.test)
         sys.exit(0)
     else:
-        # Вывод для авточекера
         print(f"tools:{len(TOOLS)} buttons:{len(BUTTONS)}")
         sys.exit(0)
 
